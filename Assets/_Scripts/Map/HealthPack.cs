@@ -8,7 +8,7 @@ public class HealthPack : MonoBehaviour
     [Header("Health Pack Settings")]
     [SerializeField] private float healthAmount = 20f; // Amount of health restored by the pack
     [SerializeField] private float respawnTime = 10f; // Time before the health pack respawns
-    private bool isAvailable = true; // Indicates if the health pack is available for pickup
+    public bool isAvailable = true; // Indicates if the health pack is available for pickup
     private Collider healtCollider;
 
     [Header("Visuals")]

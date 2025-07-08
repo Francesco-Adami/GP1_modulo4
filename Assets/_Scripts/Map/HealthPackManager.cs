@@ -24,15 +24,26 @@ public class HealthPackManager : Singleton<HealthPackManager>
     public HealthPack GetClosestHealthPack(Vector3 position)
     {
         HealthPack closest = null;
+        HealthPack firstAvailable = null;
         float closestDistance = float.MaxValue;
         foreach (var healthPack in healthPacks)
         {
+            if (healthPack.isAvailable)
+            {
+                firstAvailable = healthPack;
+            }
+
             float distance = Vector3.Distance(position, healthPack.transform.position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
                 closest = healthPack;
             }
+        }
+
+        if (!closest.isAvailable)
+        {
+            return firstAvailable;
         }
         return closest;
     }
